@@ -165,23 +165,6 @@ body {
   width: 100%;
   font-size: 12px;
 }
-/*html {
-    &::-webkit-scrollbar { 
-        width: 10px;
-        height: 1px;
-        background: #Fff;
-    }
-
-    &::-webkit-scrollbar-thumb { 
-        -webkit-box-shadow: inset 0 0 5px rgba(255,255,255,0.4);
-        background: #305978;
-    }
-
-    &::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-        background: lighten(#304156,60);
-    }
-}*/
 #layout .fit-center {
   position: fixed;
   right: 0;

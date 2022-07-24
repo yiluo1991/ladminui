@@ -6,8 +6,8 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 function mockServer() {
-  if (process.env.NODE_ENV === "local") {
-
+  if (process.env.NODE_ENV === "web") {
+    //local模式才加载
     const mockServer = require("./mock/mock-server.js");
     return mockServer;
   } else {
@@ -28,21 +28,21 @@ module.exports = {
       '/api': {
         target: 'http://192.168.6.29:8888',  
         changeOrigin: true,
-        timeout:700000
-    },
-    '/upload':{
-      target: 'http://192.168.6.29:8888',  
-      changeOrigin: true
-    }
+        timeout:700000,
+        pathRewrite:{"^/api":"/"}
+      },
+      '/upload':{
+        target: 'http://192.168.6.29:8888',  
+        changeOrigin: true
+      }
     },
     before: mockServer() 
   },
   chainWebpack(config) {
-    config.when(process.env.NODE_ENV !== "development", (config) => {
 
+    config.when(process.env.NODE_ENV !== "development", (config) => {
       config.performance.set("hints", false);
       config.devtool("none");
-
       config.optimization.splitChunks({
         chunks: "all",
         cacheGroups: {
@@ -68,10 +68,11 @@ module.exports = {
         },
       });
       config.optimization.runtimeChunk("single");
+
       config
         .plugin("banner")
         .use(Webpack.BannerPlugin, [
-          `基于AdminUI构建\n厦门励航软件开发有限公司`+ new Date(),
+          `基于LadminUI构建\n厦门励航软件开发有限公司`+ new Date()
         ])
         .end();
     });
@@ -103,7 +104,7 @@ module.exports = {
     return {
       plugins: [
         new WebpackBar({
-          name: logo+`adminui编译中，模式:${process.env.NODE_ENV}`,
+          name: logo+`Ladminui编译中，模式:${process.env.NODE_ENV}`,
         }),
       ],
     };

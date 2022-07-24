@@ -6,7 +6,7 @@ export default [
          * 
          * @api {post} /user/getuserinfo 获取登录用户信息
          * @apiName 获取登录用户信息
-         * @apiGroup 权限接口
+         * @apiGroup User
          * @apiVersion  1.0.0
          */
         response(){

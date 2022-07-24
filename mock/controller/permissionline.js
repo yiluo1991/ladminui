@@ -4,9 +4,9 @@ export default [
         url:"/permissionLine/list",
          /**
          * 
-         * @api {post} /permissiongroup/list 获取权限页列表
-         * @apiName 获取权限页列表
-         * @apiGroup 权限页管理
+         * @api {post} /permissionLine/list 获取权限页列表
+         * @apiName 获取权限项列表
+         * @apiGroup PermissionLine
          * @apiVersion  1.0.0
          */
         response(){
@@ -43,9 +43,9 @@ export default [
         url:"/PermissionLine/add",
           /**
          * 
-         * @api {post} /permissiongroup/add 添加权限页
-         * @apiName 添加权限页
-         * @apiGroup 权限页管理
+         * @api {post} /PermissionLine/add 添加权限项
+         * @apiName 添加权限项
+         * @apiGroup PermissionLine
          * @apiVersion  1.0.0
          */
         response(){
@@ -60,9 +60,9 @@ export default [
         url:"/PermissionLine/edit",
           /**
          * 
-         * @api {post} /permissiongroup/add 添加权限页
-         * @apiName 添加权限页
-         * @apiGroup 权限页管理
+         * @api {post} /PermissionLine/edit 修改权限项 
+         * @apiName 添加权限项
+         * @apiGroup PermissionLine
          * @apiVersion  1.0.0
          */
         response(){

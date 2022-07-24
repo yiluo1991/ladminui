@@ -9,7 +9,7 @@
       <div id="imgbox">
         <img src="../resources/images/user.jpg" alt="Alternate Text" />
         <div>
-          <h1>欢迎登录数据中心</h1>
+          <h1>欢迎登录管理后台</h1>
           <h2>welcom to login</h2>
         </div>
       </div>
@@ -17,38 +17,18 @@
       <div id="login-box-inner">
         <ElForm ref="form" label-width="100px" label-position="top" :rules="rules" v-bind:model="info">
           <ElFormItem label prop="loginname">
-            <ElInput
-              type="text"
-              autocomplete="off"
-              style="width:100%;"
-              placeholder="请输入用户名"
-              v-model="info.loginname"
-              v-on:keyup.native.13="login"
-            >
+            <ElInput type="text" autocomplete="off" style="width:100%;" placeholder="请输入用户名" v-model="info.loginname" v-on:keyup.native.13="login">
               <i slot="prepend" class="el-icon-user"></i>
             </ElInput>
           </ElFormItem>
           <ElFormItem label prop="password">
-            <ElInput
-              type="password"
-              autocomplete="off"
-              placeholder="请输入密码"
-              v-model="info.password"
-              v-on:keyup.native.13="login"
-            >
+            <ElInput type="password" autocomplete="off" placeholder="请输入密码" v-model="info.password" v-on:keyup.native.13="login">
               <i slot="prepend" class="el-icon-lock"></i>
             </ElInput>
           </ElFormItem>
 
           <ElFormItem style="text-align:center;">
-            <ElButton
-              type="primary"
-              :icon="logining ? 'el-icon-loading' : 'el-icon-arrow-right'"
-              round
-              @click="login"
-              :disabled="logining"
-              >{{ logining ? "登陆中..." : "登录" }}</ElButton
-            >
+            <ElButton type="primary" :icon="logining ? 'el-icon-loading' : 'el-icon-arrow-right'" round @click="login" :disabled="logining">{{ logining ? "登陆中..." : "登录" }}</ElButton>
           </ElFormItem>
         </ElForm>
       </div>
@@ -194,30 +174,31 @@ export default {
         background_size: "cover",
       },
     });
- 
- },
+  },
   beforeDestroy() {
     window.pJSDom = undefined;
   },
   methods: {
     login() {
+      //表单验证
       this.$refs.form.validate((isValid) => {
+        //isValid为true则验证通过
         if (isValid) {
-          this.logining = true;
-        
-          this.$axios
-            .post(this.$baseURL + "/login/userlogin", {
+          this.logining = true; //请求中，logining设为true按钮转圈
+         // 使用axios发出登录请求
+          this.$axios.post(this.$baseURL + "/login/userlogin", {
               username: this.info.loginname,
               password: this.info.password,
-            })
-            .then((res) => {
+            }).then((res) => {
               if (res.data.success) {
+                //跳转到returnUrl或首页
                 if (this.$route.query.returnUrl) {
                   this.$router.push(this.$route.query.returnUrl);
                 } else {
                   this.$router.push("/admin");
                 }
               } else {
+                //显示提示信息
                 this.$message({
                   message: res.data.msg,
                   type: "error",
@@ -225,6 +206,7 @@ export default {
                 this.logining = false;
               }
             });
+        
         }
       });
     },
@@ -295,14 +277,7 @@ export default {
 
     #imgbox {
       background: #3782cf;
-      background: -webkit-gradient(
-        linear,
-        80% 39%,
-        35% 80%,
-        from(rgba(39, 91, 145, 0.8)),
-        to(rgba(55, 130, 207, 0.8)),
-        color-stop(1, rgba(55, 130, 207, 0.8))
-      );
+      background: -webkit-gradient(linear, 80% 39%, 35% 80%, from(rgba(39, 91, 145, 0.8)), to(rgba(55, 130, 207, 0.8)), color-stop(1, rgba(55, 130, 207, 0.8)));
       padding: 20px 0 30px 0;
       display: flex;
       align-items: center;

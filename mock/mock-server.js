@@ -56,9 +56,19 @@ const responseFake = (url, type, respond) => {
       } else {
         console.log(chalk.green(`> 请求地址：${req.path}\n`));
       }
-      res.json(
-        Mock.mock(respond instanceof Function ? respond(req, res) : respond)
-      );
+       if(respond instanceof Function){
+        var data= respond(req, res);
+        if(data){
+          res.json( Mock.mock(data))
+        }else{
+          res.end();
+        }
+       }else{
+        res.json( Mock.mock(   respond))
+       }
+       
+      
+      
     },
   };
 };

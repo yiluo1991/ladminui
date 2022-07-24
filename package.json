@@ -1,10 +1,10 @@
 {
-  "name": "ladminui2",
-  "version": "1.0.0",
+  "name": "ladminui",
+  "version": "1.0.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "local": "vue-cli-service serve --mode local",
+    "local": "vue-cli-service serve --mode web",
     "serverless": "vue-cli-service serve  --mode serverless",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",

@@ -6,7 +6,7 @@ export default [
      *
      * @api {post} /auth/getPermissionMenu 获取权限菜单
      * @apiName 获取权限菜单
-     * @apiGroup 权限接口
+     * @apiGroup Auth
      * @apiVersion  1.0.0
      */
 
@@ -17,7 +17,6 @@ export default [
           logined: true,
           menu: [
             { Url: "/admin", Name: "首页", Icon: "el-icon-s-home", Id: 2, Children: [] },
-          
             {
               Url: "",
               Name: "后台权限管理",
@@ -40,15 +39,12 @@ export default [
                   { Url: "/admin/catch", Name: "异常捕获", Icon: null, Id: 11 }
                 ],
               }
-            
-          
           ],
           pages: [
             "/admin",
             "/admin/permissiongroup",
             "/admin/permissionline",
             "/admin/role",
-            "/admin/employee"
           ],
           permissionline: [
             "PG_G",
@@ -69,64 +65,11 @@ export default [
             "PG_M",
             "PG_A",
             "R_PLG",
-            "SC_G",
-            "SC_D",
-            "SC_M",
-            "SC_A",
-            "SC_V",
-            "SC_GP",
-            "AS_G",
-            "AS_I",
-            "AS_A",
-            "SV_G",
-            "SV_I",
-            "SV_D",
-            "U_RA",
-            "SV_MA",
-            "SV_MR",
-            "T_D",
-            "TO_F",
-            "TO_G",
-            "TO_I",
-            "TP_G",
-            "C_P",
-            "H",
-            "TP_I",
             "E_I",
             "E_A",
-            "TP_M",
             "E_M",
             "E_V",
-            "E_D",
-            "U_G",
-            "U_A",
-            "U_M",
-            "U_R",
-            "U_V",
-            "UL_G",
-            "T_G",
-            "T_M",
-            "T_A",
-            "T_V",
-            "TP_D",
-            "TP_V",
-            "TP_GS",
-            "TP_QA",
-            "SP_G",
-            "SP_A",
-            "SP_M",
-            "SP_D",
-            "UG_G",
-            "UG_A",
-            "UG_M",
-            "UG_D",
-            "PR_G",
-            "PR_C",
-            "PR_M",
-            "PR_U",
-            "PR_GM",
-            "U_UGG",
-            "SV_SPL",
+            "E_D"
           ],
         },
         msg: "请求成功",
